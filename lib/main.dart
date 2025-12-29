@@ -4,10 +4,15 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  State<MyApp> createState() => MyAppstate();
+}
 
-  final List<String> photos = [
+int i = 49;
+
+class MyAppstate extends State<MyApp> {
+  List<String> photos = [
     "images/images (2).jpg",
     "images/images (3).jpg",
     "images/téléchargement (1).jpg",
@@ -99,7 +104,12 @@ class MyApp extends StatelessWidget {
                       backgroundColor: Colors.red,
                       shape: LinearBorder(),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        i++;
+                      });
+                      print(i);
+                    },
                     child: Text(
                       "follow",
                       style: TextStyle(color: Colors.white),
@@ -125,7 +135,7 @@ class MyApp extends StatelessWidget {
                         width: 100,
                         child: Text(
                           textAlign: TextAlign.center,
-                          "follows: 100k",
+                          "follows: $i k",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
